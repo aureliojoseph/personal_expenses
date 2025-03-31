@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/widgets/graph_widget.dart';
+import 'package:personal_expenses/widgets/transaction_list_widget.dart';
 
 void main() {
   runApp(const PersonalExpenses());
@@ -20,7 +22,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Personal Expenses')),
-      body: Center(child: Text('My Personal Expenses App')),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [const GraphWidget(), const TransactionListWidget()],
+      ),
     );
   }
 }

@@ -42,7 +42,10 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [const GraphWidget(), const TransactionListWidget()],
+        children: [
+          const GraphWidget(),
+          TransactionListWidget(transactions: _transactions),
+        ],
       ),
     );
   }

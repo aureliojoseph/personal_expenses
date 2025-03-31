@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
 class TransactionListWidget extends StatelessWidget {
-  const TransactionListWidget({super.key});
+  const TransactionListWidget({super.key, required this.transactions});
+
+  final List transactions;
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      elevation: 5,
-      margin: EdgeInsets.all(20),
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Text(
-          'Transacitons List Widget',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-        ),
-      ),
-    );
+    List<Widget> transactionWidgets =
+        transactions.map((transaction) {
+          return Card(
+            child: ListTile(
+              title: Text(transaction.title),
+              subtitle: Text(transaction.date.toString()),
+              trailing: Text('\$${transaction.amount}'),
+            ),
+          );
+        }).toList();
+    return Expanded(child: ListView(children: transactionWidgets));
   }
 }
